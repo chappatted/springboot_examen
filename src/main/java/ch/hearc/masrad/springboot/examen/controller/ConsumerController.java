@@ -39,4 +39,9 @@ public class ConsumerController {
         return consumerService.getAll();
     }
 
+    @DeleteMapping(value = "{id}/review")
+    void deleteReviews(@PathVariable Long id) {
+        consumerService.deleteReviews(id);
+    }
+
 }

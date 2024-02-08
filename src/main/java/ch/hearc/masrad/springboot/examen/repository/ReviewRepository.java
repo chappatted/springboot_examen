@@ -12,4 +12,6 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
     @Query("select count(review) from Review review where review.phone.manufacturer = :manufacturer")
     Integer getCountByPhoneManufacturer(@Param("manufacturer") String manufacturer);
 
+    void deleteAllByConsumerId(Long consumerId);
+
 }

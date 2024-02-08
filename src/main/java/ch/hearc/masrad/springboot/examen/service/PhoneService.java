@@ -33,7 +33,7 @@ public class PhoneService {
             return Optional.empty();
         }
 
-        Phone phone = new Phone();
+        Phone phone = phoneOptional.get();
         phone.setManufacturer(dto.getManufacturer());
         phone.setModel(dto.getModel());
 

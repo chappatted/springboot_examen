@@ -28,9 +28,14 @@ public class ReviewController {
         }
     }
 
-    @GetMapping(value = "", produces = "application/json")
+    @GetMapping(value = "count", produces = "application/json")
     public Integer getCountForManufacturer(@RequestParam String manufacturer) {
         return reviewService.getCountForManufacturer(manufacturer);
+    }
+
+    @DeleteMapping(value = "{id}")
+    public void deleteOne(@PathVariable Long id) {
+        reviewService.deleteOne(id);
     }
 
 }
