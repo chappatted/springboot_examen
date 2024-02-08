@@ -4,6 +4,7 @@ import ch.hearc.masrad.springboot.examen.dto.ConsumerCreationDto;
 import ch.hearc.masrad.springboot.examen.dto.ConsumerResponseDto;
 import ch.hearc.masrad.springboot.examen.entity.Consumer;
 import ch.hearc.masrad.springboot.examen.repository.ConsumerRepository;
+import ch.hearc.masrad.springboot.examen.repository.ReviewRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.Optional;
 public class ConsumerService {
 
     private final ConsumerRepository consumerRepository;
+    private final ReviewRepository reviewRepository;
 
     public ConsumerResponseDto create(ConsumerCreationDto dto) {
         Consumer consumer = dto.toEntity();
@@ -31,6 +33,10 @@ public class ConsumerService {
 
     public List<ConsumerResponseDto> getAll() {
         return consumerRepository.findAll().stream().map(ConsumerResponseDto::fromEntity).toList();
+    }
+
+    public void deleteReviews(Long id) {
+        reviewRepository.deleteAllByConsumerId(id);
     }
 
 }

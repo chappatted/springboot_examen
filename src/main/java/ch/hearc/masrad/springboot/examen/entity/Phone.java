@@ -24,6 +24,9 @@ public class Phone {
     @OneToMany(mappedBy="phone")
     private List<Review> reviews = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "phones")
+    private List<Camera> cameras;
+
     public Phone(String manufacturer, String model) {
         this.manufacturer = manufacturer;
         this.model = model;
